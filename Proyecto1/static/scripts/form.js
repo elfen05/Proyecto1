@@ -50,11 +50,25 @@ function callAPIforCrear(){
 //const formDelete = document.querySelector('clase');
 //formDelete.addEventListener('submit', handleSubmit);
 
-$("#deleteButton").click(function () {
-   // var $row = $(this).closest("tr");    // Find the row
-  //  var $text = $row.find(".nr").text(); // Find the text
+/*
+function addEventListener(event) {
+    event.preventDefault();
+    var $row = $(this).closest('tr');
+    var $text = $row.find('.nr').text();
+    alert("le di click")
 
-    // Let's test it out
-    alert('presionado');
-    console.log('presionado')
-});
+}
+
+const delBoton = document.getElementById('delBoton');
+delBoton.addEventListener('click', addEventListener)
+*/
+
+// Como costo! element me pasa el elemento (boton!) que se esta haciendo click en ese momento
+function delPais(element) {
+    var idTxt = $(element).closest('tr').find('.nr').text();
+    //console.log(element)
+    //alert(idTxt)
+
+    //Listo,ahora a borrarlo!!
+
+}

@@ -23,15 +23,16 @@
             {%if key == "id" %}
             <td class="nr"><span>{{value}}</span></td>
             {% else %}
-            <th scope="row">{{value}}</th>
+            <td scope="row">{{value}}</td>
             {%endif%}
 
             {% endfor %}
 
-            <th scope="row"><button id="deleteButton" type="button" class="btn btn-danger">Borrar</button></th>
-<tr>
+            <td><button id="delBoton" onclick="delPais(this)" type="button" class="btn btn-danger">Borrar</button></td>
+         <tr>
             {% endfor %}
     </tbody>
 </table>
+
 
 {% endblock %}
