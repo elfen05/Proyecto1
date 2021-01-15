@@ -90,3 +90,15 @@ function CallAPIforBorrar(id) {
         console.log(response);
     });
 }
+
+function mostrarCiudades(element) {
+    var idTxt = $(element).closest('tr').find('.nr').text();
+
+    //alert(idTxt)
+    window.location.href = 'ciudadesPais?id=' + idTxt;
+
+    
+}
+
+// vamos a probar on load.. el problema es que solo lo ocupo para una variable
+

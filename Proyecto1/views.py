@@ -63,4 +63,8 @@ def agregarpais():
 def deleteList():
     #Request from postma
     return render_template('deleteList.html')
-    
+ 
+@app.route('/ciudadesPais')
+def ciudadessPais():
+    #Request from postma
+    return render_template('ciudadesPais.html')

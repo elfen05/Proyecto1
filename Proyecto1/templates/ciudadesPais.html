@@ -1,0 +1,30 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+    // referencia para obtener el parametro  https://es.stackoverflow.com/questions/445/c%C3%B3mo-obtener-valores-de-la-url-get-en-javascript
+    let params = new URLSearchParams(location.search);
+    var id2 = params.get('id');
+    //alert(id2)
+    
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+   
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch("http://192.168.0.7:5000/pais/"+id2+"/ciudad/", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+</script>
+
+{% endblock %}
