@@ -66,9 +66,27 @@ delBoton.addEventListener('click', addEventListener)
 // Como costo! element me pasa el elemento (boton!) que se esta haciendo click en ese momento
 function delPais(element) {
     var idTxt = $(element).closest('tr').find('.nr').text();
-    //console.log(element)
+    
     //alert(idTxt)
-
+   
     //Listo,ahora a borrarlo!!
+    CallAPIforBorrar(idTxt)
 
+}
+
+function CallAPIforBorrar(id) {
+    var settings = {
+        "url": "http://192.168.0.7:5000/pais/" + id + "/",
+        "method": "DELETE",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        //"data": JSON.stringify({ "cod_iso": "JP", "nombre": "Japon" }),
+    };
+    console.log(settings)
+    
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
 }
