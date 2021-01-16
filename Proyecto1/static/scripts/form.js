@@ -2,6 +2,10 @@
 // following : https://www.learnwithjason.dev/blog/get-form-values-as-json/
 var data
 var formJSON 
+
+var dataciudad
+var JSONciudad
+
 function handleSubmit(event) {
     event.preventDefault();
 
@@ -25,6 +29,19 @@ function handleSubmit(event) {
 
 const form = document.querySelector('form');
 form.addEventListener('submit', handleSubmit);
+
+function handleSubmitCiudad(ev) {
+   
+    var formElement = document.getElementById("formCiudad");
+    var formData = new FormData(formElement);
+    JSONc = Object.fromEntries(formData.entries());
+   
+    console.log(JSONc)
+}
+
+
+const formciudad = document.querySelector('.formCiudad');
+formciudad.addEventListener('submit', handleSubmitCiudad);
 
 // Lo siguiente es de postman - JavaScript - Jquery
 
@@ -75,7 +92,7 @@ function delPais(element) {
     CallAPIforBorrar(idTxt)
 
 }
-
+/*
 function delCiudad(element) {
     var idTxt = $(element).closest('tr').find('.nm').text();
     //Nota: Obtengo el parametro asi porque aunque con el request lo estoy pasando desde views, una vez en el html no se como pasarlo a la funcion onclick
@@ -87,12 +104,12 @@ function delCiudad(element) {
 
     //alert(idTxt)
 
-    //Listo,ahora a borrarlo!!
-   // CallAPIforBorrarCiudad(idTxt)
+    //Listo,ahora a borrarlo!! ahorita solo borrar cartago
+    //CallAPIforBorrarCiudad()
 
 }
 
-
+*/
 
 function CallAPIforBorrar(idpais) {
     var settings = {
@@ -110,6 +127,7 @@ function CallAPIforBorrar(idpais) {
         console.log(response);
     });
 }
+
 
 function mostrarCiudades(element) {
     var idTxt = $(element).closest('tr').find('.nr').text();

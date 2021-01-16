@@ -1,0 +1,26 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<form id="formCiudad">
+    <label for="nombre">Nombre de la ciudad</label>
+    <input type="text" name="nombre" id="nombre" />
+    <br>
+    <label for="cod_iso">Es capital: </label>
+    <div class="input-group">
+        <input name="capital" type="radio" value="true" />
+        <label class="inline" for="nombre">Si  </label>
+
+        <input id="capital" name="capital" type="radio" value="false" />
+        <label class="inline" for="capital">No  </label>
+
+    </div>
+    <br>
+    <button id="enviar" type="button" onclick="handleSubmitCiudad(event)"class="btn btn-info">Enviar</button>
+    
+</form>
+
+
+
+{% endblock %}
+

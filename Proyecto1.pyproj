@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Proyecto1\static\scripts\form.js" />
+    <Content Include="Proyecto1\templates\agregarciudad.html" />
     <Content Include="Proyecto1\templates\ciudadesPais.html" />
     <Content Include="Proyecto1\templates\mostrarpaises.html" />
     <Content Include="Proyecto1\templates\agregarpais.html" />
