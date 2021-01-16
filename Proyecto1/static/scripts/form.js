@@ -18,6 +18,8 @@ function handleSubmit(event) {
 
     const results = document.querySelector('.results pre');
     results.innerText = JSON.stringify(formJSON, null, 2);
+
+    //llama el API para guarda el dato
     callAPIforCrear()
 }
 
@@ -74,9 +76,40 @@ function delPais(element) {
 
 }
 
-function CallAPIforBorrar(id) {
+function delCiudad(element) {
+    var idTxt = $(element).closest('tr').find('.nm').text();
+    //Nota: Obtengo el parametro asi porque aunque con el request lo estoy pasando desde views, una vez en el html no se como pasarlo a la funcion onclick
+    let params = new URLSearchParams(location.search);
+    var id2 = params.get('id');
+    alert(idTxt)
+
+    //alert(idTxt)
+
+    //Listo,ahora a borrarlo!!
+    //CallAPIforBorrarCiudad(idTxt)
+
+}
+
+function CallAPIforBorrarCiudad(id) {
     var settings = {
         "url": "http://192.168.0.7:5000/pais/" + id + "/",
+        "method": "DELETE",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        //"data": JSON.stringify({ "cod_iso": "JP", "nombre": "Japon" }),
+    };
+    console.log(settings)
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+}
+
+function CallAPIforBorrar(idciudad, idpais) {
+    var settings = {
+        "url": "http://192.168.0.7:5000/pais/" + idpais + "/",
         "method": "DELETE",
         "timeout": 0,
         "headers": {

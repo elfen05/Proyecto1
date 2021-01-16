@@ -6,6 +6,7 @@ from datetime import datetime
 from flask import render_template
 from Proyecto1 import app
 import requests
+from flask import request
 
 @app.route('/')
 @app.route('/home')
@@ -44,7 +45,7 @@ def mostrarpaises():
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
     listaPaises= response.json()
-    print(type(listaPaises))
+    #print(type(listaPaises))
 
     return render_template(
         'mostrarpaises.html',
@@ -66,5 +67,12 @@ def deleteList():
  
 @app.route('/ciudadesPais')
 def ciudadessPais():
-    #Request from postma
-    return render_template('ciudadesPais.html')
+    id = request.args.get('id')
+    print(id)
+    url = "http://192.168.0.7:5000/pais/"+id+"/ciudad/"
+    payload={}
+    headers = {}
+    response = requests.request("GET", url, headers=headers, data=payload)
+    listaCiudadesPais= response.json()
+    print(listaCiudadesPais)
+    return render_template('ciudadesPais.html',lista=listaCiudadesPais, idpais=id)

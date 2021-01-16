@@ -3,28 +3,88 @@
 {% block content %}
 
 <script>
+    /*
+     * OJO! dentro de este <script> no estoy llamando nada:
+     * Interesante para JS pero logre obtener el parametro mucho mas facil con - From Flask import requests - see views.py .. keep it here as reference
+     *
+     *
     // referencia para obtener el parametro  https://es.stackoverflow.com/questions/445/c%C3%B3mo-obtener-valores-de-la-url-get-en-javascript
     let params = new URLSearchParams(location.search);
     var id2 = params.get('id');
-    //alert(id2)
-    
+    var ListaCiudades
 
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    // Llamada al API para traer las ciudades
 
-   
-
-    var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
+    window.onload = function () {
+        CallAPIforCiudadPais();
     };
 
-    fetch("http://192.168.0.7:5000/pais/"+id2+"/ciudad/", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+    function CallAPIforCiudadPais() {
 
+        var settings = {
+            "url": "http://192.168.0.7:5000/pais/" + id2 + "/ciudad/",
+            "method": "GET",
+            "dataType": "json",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json"
+            },
+
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+
+
+
+    }
+
+    //listaCiudades = response convertido en json
+    // google como hacer la table con js
+    //Insert codigo js into html
+    */
 </script>
 
+
+
+<table id="tablaCiudadPais" class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Capital</th>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Borrar?</th>
+            <th scope="col">Modificar?</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for i in lista %}
+        <tr>
+            {% for key, value in i.items() %}
+
+
+            {% if key == "capital" and  value == True%}
+            <td scope="row">Si</td>
+            {% elif key == "capital" and  value ==  False %}
+            <td scope="row">No</td>
+            {% elif key=="id"%}
+            <td class="nm"><span>{{value}}</span></td>
+            {%elif key=='nombre'%}
+            <td scope="row">{{value}}</td>
+            {%endif%}
+            {% endfor %}
+
+            <td><button id="delBoton" onclick="delCiudad(this)" type="button" class="btn btn-danger">Borrar</button></td>
+            <td><button id="ciudadesBoton" type="button" class="btn btn-info">Modificar</button></td>
+        <tr>
+            {% endfor %}
+    </tbody>
+</table>
+
+<button id="agregarciudad" type="button" class="btn btn-info">Agregar Nueva Ciudad</button>
+
+
 {% endblock %}
+
