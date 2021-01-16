@@ -83,31 +83,18 @@ function delCiudad(element) {
     var id2 = params.get('id');
     alert(idTxt)
 
+
+
     //alert(idTxt)
 
     //Listo,ahora a borrarlo!!
-    //CallAPIforBorrarCiudad(idTxt)
+   // CallAPIforBorrarCiudad(idTxt)
 
 }
 
-function CallAPIforBorrarCiudad(id) {
-    var settings = {
-        "url": "http://192.168.0.7:5000/pais/" + id + "/",
-        "method": "DELETE",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        //"data": JSON.stringify({ "cod_iso": "JP", "nombre": "Japon" }),
-    };
-    console.log(settings)
 
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
-}
 
-function CallAPIforBorrar(idciudad, idpais) {
+function CallAPIforBorrar(idpais) {
     var settings = {
         "url": "http://192.168.0.7:5000/pais/" + idpais + "/",
         "method": "DELETE",
