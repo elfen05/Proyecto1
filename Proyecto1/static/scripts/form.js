@@ -92,25 +92,40 @@ function delPais(element) {
     CallAPIforBorrar(idTxt)
 
 }
-/*
+
 function delCiudad(element) {
-    var idTxt = $(element).closest('tr').find('.nm').text();
+    var idciudad = $(element).closest('tr').find('.nm').text();
+    //var idpais = $(element).closest('tr').find('.pa').text();
     //Nota: Obtengo el parametro asi porque aunque con el request lo estoy pasando desde views, una vez en el html no se como pasarlo a la funcion onclick
     let params = new URLSearchParams(location.search);
-    var id2 = params.get('id');
-    alert(idTxt)
-
-
+    var idp = params.get('id');
 
     //alert(idTxt)
 
     //Listo,ahora a borrarlo!! ahorita solo borrar cartago
-    //CallAPIforBorrarCiudad()
+    CallAPIforBorrarCiudad(idp,idciudad)
 
 }
 
-*/
+//Borrar ciudades una vez cargado la lista de ciudades por pais
+function CallAPIforBorrarCiudad(idpais,idciudad) {
 
+    var settings = {
+        "url": "http://192.168.0.7:5000/pais/" + idpais + "/ciudad/" + idciudad+"/",
+        "method": "DELETE",
+        "timeout": 0,
+        "headers": {
+            "Allow": "DELETE"
+        },
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+
+}
+
+// Este va a borrar pais
 function CallAPIforBorrar(idpais) {
     var settings = {
         "url": "http://192.168.0.7:5000/pais/" + idpais + "/",
@@ -138,5 +153,5 @@ function mostrarCiudades(element) {
     
 }
 
-// vamos a probar on load.. el problema es que solo lo ocupo para una variable
+
 

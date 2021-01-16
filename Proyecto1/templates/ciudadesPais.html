@@ -73,12 +73,14 @@
             <td class="nm"><span>{{value}}</span></td>
             {%elif key=='nombre'%}
             <td scope="row">{{value}}</td>
+            {%elif key=='pais'%}
+            <td class="pa">{{value}}</td>
             {%endif%}
             {% endfor %}
 
             <td><button id="delBoton" onclick="delCiudad(this)" type="button" class="btn btn-danger">Borrar</button></td>
             <td><button id="ciudadesBoton" type="button" class="btn btn-info">Modificar</button></td>
-        <tr>
+<tr>
             {% endfor %}
     </tbody>
 </table>
